@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login JSS Students</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <style>
+    .form-control,.form-control:focus,.btn{
+      border-radius:0;
+      box-shadow:none;
+    }
+    label{
+      font-weight:300;
+    }
+    .loginContainer{
+      background-color: #fff;
+      box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.3);
+      margin:auto;
+      margin-top:4%;
+      padding:3% 20px;
+      max-width:450px;
+      width:100%;
+      border-radius:2px;
+    }
+    .loginContainer h1{
+      font-size:2em;
+      margin-top:0;
+    }
+    .btn{
+      background:#34495E;
+      border:0;
+      display:block;
+      width:100%;
+      max-width:200px;
+      margin:auto;
+    }
+    body{
+      background:#7F8C8D;
+    }
+    .forgotPassword,.forgotPassword:focus,.forgotPassword:hover{
+      font-size:.9em;
+      color:inherit;
+    }
+  </style>
+</head>
+<body>
+  <section class="container-fluid">
+    <div class="loginContainer">
+      <h1 class="text-center">Login</h1>
+      <form role="form" method="post" action="">
+        {% csrf_token %}
+        <div class="form-group">
+          <label class="control-label" for="username">Username</label>
+          <input id="username" name="username" type="text" placeholder="username" class="form-control input-md" required>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" required>
+          <p class="help-block text-right"><a href="javascript:" class="forgotPassword">Forgot password ?</a></p>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" value="Login">
+        </div>
+      </form>
+      <p class="text-center">Not a member yet. You can <a href="/register">Signup</a> here</p>
+    </div>        
+  </section>
+  <div class="modal fade" id="forgotPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form action="" onsubmit="return false;">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" name="email" id="email" placeholder="Email Id" required>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" value="Retrive password">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script>
+  $(document).on('click','.forgotPassword',function(){
+    $('#forgotPasswordModal').modal('show');
+  });
+</script>
+</html>

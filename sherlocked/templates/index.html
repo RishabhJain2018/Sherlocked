@@ -1,0 +1,94 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JSS Students Portal</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/static/css/home.css">
+	<style>
+	</style>
+</head>
+<body>
+	<header class="container-fluid">
+		<div class="row">
+			<div class="col-xs-3">
+				<img src="/static/images/fclogo.png" alt="JSSATEN" class="img-responsive">
+			</div>
+			<div class="col-xs-6">
+				<h1 class="text-center">Student Academic Record</h1>
+			</div>
+			<div class="col-xs-3">
+				<ul class="links">
+					{% if user.is_authenticated %}
+						<li style="color:white;">Welcome {{ user.first_name }} {{ user.last_name }}</li>
+						<li><a href="/logout">Logout</a></li>
+						<li><a href="javascript:" class="changePassword">Change Password</a></li>
+					{% else %}
+						<li><a href="/login">Login</a></li>
+						<li><a href="/register">Signup</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</header>
+	<section class="container-fluid">
+		<div class="row">
+			<div class="col-sm-12">
+				<img src="/static/images/front_image.jpg" alt="JSSATEN" class="img-responsive">
+			</div>
+			<div class="col-sm-12 description">
+				<p>This portal is for the students of the JSS Acadmey of Technical Education Noida so that they can have their home page while applying for the internships. The generated page will act as their protfolio page.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<p>This portal is for the students of the JSS Acadmey of Technical Education Noida so that they can have their home page while applying for the internships. The generated page will act as their protfolio page.</p>
+			</div>
+			<div class="col-sm-12">
+				{% if logout %}
+			    	<div class="alert alert-warning">
+			        <a href="#" class="close" data-dismiss="alert">&times;</a>
+			        <strong>Hey!</strong> You have been successfully logged Out.
+			    </div>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+  <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form action="" onsubmit="return false;">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<p><strong>Email : </strong> example@examle.com</p>
+						<div class="form-group">
+              <label for="opssw">Old Password</label>
+              <input type="password" class="form-control" name="opssw" id="opssw" required>
+            </div>
+            <div class="form-group">
+              <label for="pssw">New Password</label>
+              <input type="password" class="form-control" name="pssw" id="pssw" required>
+            </div>
+            <div class="form-group">
+              <label for="rpssw">Retype Password</label>
+              <input type="password" class="form-control" name="rpssw" id="rpssw" required>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" value="Change password">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+	<footer class="container-fluid text-center">
+		<a href="javascript:">About Us</a>
+	</footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script>
+	$(document).on('click','.changePassword',function(){
+		$('#changePasswordModal').modal('show');
+	});
+	</script>
+</body>
+</html>
