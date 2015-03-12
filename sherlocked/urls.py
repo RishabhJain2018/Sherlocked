@@ -13,12 +13,12 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
-    url(r'^$', 'sherlocked.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'login', 'progen.views.login', name='login'),
-    url(r'register', 'progen.views.signup', name='signup'),
-    url(r'profile', 'progen.views.profile', name='profile'),
+    url(r'login', 'sherlocked.views.login', name='login'),
+    url(r'register', 'sherlocked.views.signup', name='signup'),
+    url(r'profile', 'sherlocked.views.profile', name='profile'),
     url(r'logout', 'django.contrib.auth.views.logout',{'next_page': '/login'}),
+    url(r'', 'sherlocked.views.home', name='home'),
     # url(r'^admin/', include(admin.site.urls)),
 )
 

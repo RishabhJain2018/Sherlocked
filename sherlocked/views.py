@@ -28,14 +28,13 @@ def signup(request):
 			username = request.POST['username']
 			email = request.POST['email']
 			password = request.POST['password']
-			firstname = request.POST['firstname']
-			lastname = request.POST['lastname']
+			name = request.POST['firstname']
 			try:
-				user = User.objects.create_user(username=username,email=email,password=password,first_name=firstname,last_name=lastname)
+				user = User.objects.create_user(username=username,email=email,password=password,first_name=name,last_name='')
 				user.save()
-				return HttpResponseRedirect("/profile")
+				return HttpResponseRedirect("/login")
 			except:
-				return HttpResponse("This Id already exists")
+				return HttpResponse("<h2>Error: This Id already exists</h2>")
 		else:
 			print "entered the else section"
 			return render_to_response("register.html",context_instance=RequestContext(request))
@@ -82,5 +81,5 @@ def login(request):
 
 def profile(request):
 	""" profile editing view. User can update their profile using this view. """
-	return render_to_string("THIS IS PROFILE PAGE")
+	return HttpResponse("THIS IS PROFILE PAGE")
 # 
