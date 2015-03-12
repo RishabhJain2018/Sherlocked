@@ -14,6 +14,7 @@ from django.template.loader import render_to_string, get_template
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
+from sherlocked.models import * 
 from datetime import datetime,timedelta
 import random,string,ast
 def home(request):
@@ -70,7 +71,7 @@ def login(request):
 # 			user = User.objects.get(username=username)
 # 			user.set_password(password)
 # 			user.save()
-# 	return HttpResponseRedirect("/profile")
+# 	return HttpResponseRedirect("/passwordrofile")
 
 # donot delete this function as it may be used in future for the purpose of logout to a specific page
 # def logout_view(request):
@@ -82,4 +83,29 @@ def login(request):
 def profile(request):
 	""" profile editing view. User can update their profile using this view. """
 	return HttpResponse("THIS IS PROFILE PAGE")
-# 
+
+def mystery(request):
+	if request.user.is_authenticated():
+		try:
+			user = UserDetail.objects.get(Zealid = request.user.username)
+			question = Question.objects.get(pk = user.CurrentQuestionNo)
+			return render_to_response("question.html",{"q":question},context_instance = RequestContext(request))
+		except:
+			UserDetail.objects.create(Zealid = request.user.username, CurrentQuestionNo = 1).save()
+			question = Question.objects.get(pk= 1)
+			return render_to_response("question.html",{"q":question},context_instance =RequestContext(request))
+		# waitTime = datetime.now() - user.LastSolvedAt
+		return render_to_response('question.html')
+	else:
+		return HttpResponseRedirect('/login')
+
+def submit(request):
+	if request.POST:
+		answer = request.POST['answer']
+		user = UserDetail.objects.get(Zealid = request.user.username)
+		question = Question.objects.get(pk = user.CurrentQuestionNo)
+		if answer.lower() == question.Answer.lower():
+			UserDetail.objects.filter(Zealid = request.user.username).update(CurrentQuestionNo = user.CurrentQuestionNo+1)
+			return HttpResponseRedirect("/mystery")
+
+
