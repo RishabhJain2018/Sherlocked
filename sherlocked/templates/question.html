@@ -1,11 +1,15 @@
 <html>
 	<head>
 		<title>Mysterious Mystery</title>
-		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="/static/css/dropzone.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		<script src="/static/js/flipclock/flipclock.min.js"></script>
+		<link rel="stylesheet" href="/static/css/flipclock.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/static/js/flipclock.js"></script>
+    <link rel="stylesheet" href="/static/css/flipclock.css">
 	</head>
 	<body>
 	{% if q %}
@@ -41,6 +45,16 @@
 		</div>
 		</form>
 	</div>
+	{% endif %}
+	{% if wt %}
+<div style="margin: 10% 10%">		
+		<div class="clock"></div></div>
+		<h2>Wait Message: {{ waitmsg }}</h2> 
+		<script type="text/javascript">
+		var clock = $('.clock').FlipClock({{ wt }}, {
+			countdown: true
+		});
+</script>
 	{% endif %}
 	</body>
 </html>

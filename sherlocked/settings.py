@@ -26,7 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-USE_TZ = True
+# USE_TZ = True
 
 
 # Application definition

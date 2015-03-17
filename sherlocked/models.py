@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class UserDetail(models.Model):
 	Zealid = models.CharField(max_length = 70)
 	CurrentQuestionNo = models.IntegerField(default = 0)
-	LastSolvedAt = models.DateTimeField(auto_now_add = True)
+	LastSolvedAt = models.CharField(max_length = 10000)
 
 class Question(models.Model):
 	QuestionTitle = models.CharField(max_length = 1000)

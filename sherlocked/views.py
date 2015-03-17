@@ -17,6 +17,7 @@ from django.template import Context
 from sherlocked.models import * 
 from datetime import datetime,timedelta
 import random,string,ast
+import datetime
 def home(request):
 	"""this view is for the home page display"""
 	return render_to_response("index.html",context_instance=RequestContext(request))
@@ -53,13 +54,13 @@ def login(request):
 				# Correct password, and the user is marked "active"
 				auth.login(request,user)
 				# Redirect to a success page.
-				return HttpResponseRedirect("/profile")
+				return HttpResponseRedirect("/description")
 			else:
 				# Show an error page
 				return HttpResponse("<h3>Incorrect password</h3>")
 		return render_to_response('login.html',context_instance=RequestContext(request))
 	else:
-		return HttpResponseRedirect("/profile")
+		return HttpResponseRedirect("/mystery")
 
 # def changepassword(request):
 # 	""" user password change view """
@@ -80,32 +81,63 @@ def login(request):
 # 	# return HttpResponseRedirect("/")
 # 	return render_to_response("index.html",{'logout':1},context_instance=RequestContext(request))
 
-def profile(request):
+def description(request):
 	""" profile editing view. User can update their profile using this view. """
-	return HttpResponse("THIS IS PROFILE PAGE")
+	if request.user.is_authenticated():
+		return render_to_response("description.html")
+	else:
+		HttpResponseRedirect("/login")
 
 def mystery(request):
 	if request.user.is_authenticated():
 		try:
+			print "the username of user is ", request.user.username
 			user = UserDetail.objects.get(Zealid = request.user.username)
+			print "HE IS A PREVIOUS USER"
+			print user.CurrentQuestionNo
 			question = Question.objects.get(pk = user.CurrentQuestionNo)
-			return render_to_response("question.html",{"q":question},context_instance = RequestContext(request))
+			print "user last solved at ", user.LastSolvedAt
+			LastSolved = datetime.datetime.strptime(str(user.LastSolvedAt).split(".")[0], '%Y-%m-%d %H:%M:%S')
+			wait = (datetime.datetime.now()-LastSolved).total_seconds() < float(question.WaitTime)*60*60 
+			if wait:
+				wt = abs((datetime.datetime.now()-LastSolved).total_seconds() - float(question.WaitTime)*60*60)
+				print "THE WAIT TIME FOR USER IS ",wt 
+				return render_to_response("ques.html",{'wt':int(wt),'waitmsg':question.WaitMessage},context_instance = RequestContext(request))
+			# waitTime = int((datetime.datetime.now() - user.LastSolvedAt[:-6]).total_seconds())
+			# if waitime>=question.:
+				# return render_to_response("question.html",{"wait":waititme},context_instance = RequestContext(request))
+			# else:
+			return render_to_response("ques.html",{"q":question},context_instance = RequestContext(request))
 		except:
-			UserDetail.objects.create(Zealid = request.user.username, CurrentQuestionNo = 1).save()
+			print "HE IS A NEW USER"
+			UserDetail.objects.create(Zealid = request.user.username, CurrentQuestionNo = 1,LastSolvedAt = str(datetime.datetime.now())).save()
 			question = Question.objects.get(pk= 1)
-			return render_to_response("question.html",{"q":question},context_instance =RequestContext(request))
+			return render_to_response("ques.html",{"q":question},context_instance =RequestContext(request))
 		# waitTime = datetime.now() - user.LastSolvedAt
-		return render_to_response('question.html')
+		return render_to_response('ques.html')
 	else:
 		return HttpResponseRedirect('/login')
 
 def submit(request):
 	if request.POST:
+		print "entered into submit url"
 		answer = request.POST['answer']
 		user = UserDetail.objects.get(Zealid = request.user.username)
 		question = Question.objects.get(pk = user.CurrentQuestionNo)
 		if answer.lower() == question.Answer.lower():
-			UserDetail.objects.filter(Zealid = request.user.username).update(CurrentQuestionNo = user.CurrentQuestionNo+1)
-			return HttpResponseRedirect("/mystery")
+			UserDetail.objects.filter(Zealid = request.user.username).update(CurrentQuestionNo = (user.CurrentQuestionNo)+1,LastSolvedAt = str(datetime.datetime.now()))
+			print "The answer is correct and query executed "
+			if user.CurrentQuestionNo==14:
+				return render_to_response('')
+		else:
+			print "the answer is not correct."
+	return HttpResponseRedirect("/mystery")
 
+def leaderboard(request):
+	users = UserDetail.objects.order_by('-CurrentQuestionNo')
+	for i in users:
+		print i.Zealid
+	return render_to_response("leaderboard.html",{'users':users},context_instance = RequestContext(request))
 
+def winner(request):
+	return render_to_response("winner.html")

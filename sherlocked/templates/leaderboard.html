@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sherlocked | Home</title>
+	<link rel="stylesheet" href="/static/assets/css/materialize.min.css">
+	<link rel="stylesheet" href="/static/assets/css/base.css">
+</head>
+<body class="white-text" style="background-image:url('/static/assets/q6.jpg');">
+
+<div class="container">
+
+<div class="col s12 center-align ques-block">
+	<span class="ques" id="leader"> <quote>
+		<table>
+			<thead>
+				<tr>
+				<td>S.no</td>
+				<td>Name</td>
+				<td>Level</td>
+				</tr>
+			</thead>
+			<tbody>
+			{% for i in users %}
+				<tr>
+					<td>1</td>
+					<td>{{ i.Zealid }}</td>
+					<td>{{ i.CurrentQuestionNo }}</td>
+				</tr>
+			{% endfor %}
+
+			</tbody>
+              
+
+	</quote></span>
+	
+
+</div>
+
+
+</div>
+
+
+
+<script src="/static/assets/js/materialize.min.js"></script>
+</body>
+</html>

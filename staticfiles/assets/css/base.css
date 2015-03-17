@@ -1,0 +1,37 @@
+body{
+background-size: cover;
+}
+.ques-block{
+	background:#fcfcfc;
+	opacity:0.9;
+	color:#666;
+	font-size:2.4em;
+	padding:1.2em;
+	margin:1em;
+	font-weight: 300;
+
+}
+
+input{
+	color:#666;
+	font-size:2.4em;
+	padding:1.2em;
+	margin:1em;
+	font-weight: 600;
+	border:1px solid grey;
+}
+
+.ques-block a{
+	font-size: 0.8em;
+}
+
+#winner {
+	padding-top: 40%;
+	font-size: 3.8em;
+	margin-top:40% !important;
+
+}
+
+#leader{
+	font-size: 1sem !important;
+}

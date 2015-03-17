@@ -1,0 +1,120 @@
+header{
+    background:#222;
+    height:100px;
+    font-family: 'Roboto', sans-serif;
+}
+header .img-responsive{
+    width:90px;
+    margin:6px 0 0 23%;
+}
+section .img-responsive{
+    display: block;
+    margin:auto;
+}
+ul{
+    padding-left: 18px;
+}
+.row{
+    margin:0;
+}
+.row>div{
+    padding:0;
+}
+body{
+    background:#7F8C8D;
+}
+header .links{
+    list-style:none;
+    padding:0;
+    margin:0;
+    float:right;
+    margin-top:37px;
+}
+header .links li{
+    display:inline-block;
+}
+header .links li a,header .links li a:hover,header .links li a:focus{
+    color:white;
+    padding:2px 6px;
+}
+header h1{
+    color:white;
+    font-size:2.1em;
+    font-weight:300;
+    margin-top:33px;
+}
+.infoContainer{
+    background: white;
+    border:1px solid #bbb;
+    margin-top:20px;
+    font-size:1.1em;
+    font-family: 'Roboto', sans-serif;
+    padding-right:10px;
+}
+.infoContainer>div{
+    padding:10px 0 0 10px;
+}
+.infoContainer h1{
+    font-size:1.2em;
+    margin:0 0 5px;
+    padding-bottom: 5px;
+    border-bottom:1px solid #eee;
+}
+.skills{
+    padding:0;
+    list-style: none;
+    margin:0;
+}
+.skills li{
+    display: inline-block;
+    margin-right: 15px;
+    border:1px solid #aaa;
+    border-radius: 4px;
+    border-left:15px solid #333;
+    padding:5px 5px 5px 10px;
+    margin-bottom:10px;
+}
+.projects h2{
+    font-size:1.1em;
+    margin:0 0 10px;
+}
+.intrests{
+    list-style: none;
+    padding:0;
+}
+.intrests li{
+    display: inline-block;
+    padding-right:5px;
+    margin-right:5px;
+}
+footer{
+    background: #111;
+    height:35px;
+    margin-top:25px;
+}
+footer a,footer a:hover,footer a:focus{
+    display: inline-block;
+    color:white;
+    letter-spacing: 1px;
+    padding:8px;
+}
+@media(max-width:768px){
+    header h1{
+        font-size:1.2em;
+        margin-top:41px;
+    }
+    header .links li a{
+        font-size:.9em;
+    }
+    header .links li{
+        margin-right:0px;
+    }
+    header .img-responsive{
+        margin:0;
+        margin-top:8px;
+    }
+    header .links{
+        margin-top:39px;
+    }
+
+}
