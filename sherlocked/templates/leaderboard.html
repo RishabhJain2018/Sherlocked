@@ -6,6 +6,12 @@
 	<link rel="stylesheet" href="/static/assets/css/base.css">
 </head>
 <body class="white-text" style="background-image:url('/static/assets/q6.jpg');">
+<header class="center-align">
+	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/leaderboard">Leaderboard</a>
+	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/description">Rules</a>
+	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/mystery">Solve Mystery</a>
+	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/logout">Logout</a>
+</header>
 
 <div class="container">
 
@@ -14,17 +20,19 @@
 		<table>
 			<thead>
 				<tr>
-				<td>S.no</td>
+				<td>S. No</td>
 				<td>Name</td>
 				<td>Level</td>
+				<td>College</td>
 				</tr>
 			</thead>
 			<tbody>
 			{% for i in users %}
 				<tr>
-					<td>1</td>
+					<td></td>
 					<td>{{ i.Zealid }}</td>
 					<td>{{ i.CurrentQuestionNo }}</td>
+					<td>{{ i.college }}</td>
 				</tr>
 			{% endfor %}
 
@@ -42,5 +50,7 @@
 
 
 <script src="/static/assets/js/materialize.min.js"></script>
+<script type="text/javascript">
+
 </body>
 </html>

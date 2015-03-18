@@ -20,7 +20,10 @@ import random,string,ast
 import datetime
 def home(request):
 	"""this view is for the home page display"""
-	return render_to_response("index.html",context_instance=RequestContext(request))
+	if request.user.is_authenticated():
+		return render_to_response("index.html",{"user":request.user},context_instance=RequestContext(request))
+	else:
+		return render_to_response("index.html",{"user":0},context_instance=RequestContext(request))
 
 def signup(request):
 	"""signup for the user """
@@ -31,9 +34,12 @@ def signup(request):
 			email = request.POST['email']
 			password = request.POST['password']
 			name = request.POST['firstname']
+			college = request.POST['college']
+			phno = request.POST['phno']
 			try:
 				user = User.objects.create_user(username=username,email=email,password=password,first_name=name,last_name='')
 				user.save()
+				UserDetail.objects.create(Zealid = username,college = college,phno = phno,LastSolvedAt = str(datetime.datetime.now())).save()
 				return HttpResponseRedirect("/login")
 			except:
 				return HttpResponse("<h2>Error: This Id already exists</h2>")
@@ -86,15 +92,18 @@ def description(request):
 	if request.user.is_authenticated():
 		return render_to_response("description.html")
 	else:
-		HttpResponseRedirect("/login")
+		return HttpResponseRedirect("/login")
 
 def mystery(request):
 	if request.user.is_authenticated():
-		try:
+		user = UserDetail.objects.get(Zealid = request.user.username)
+		if user.CurrentQuestionNo != 0:
 			print "the username of user is ", request.user.username
-			user = UserDetail.objects.get(Zealid = request.user.username)
 			print "HE IS A PREVIOUS USER"
 			print user.CurrentQuestionNo
+			print "CURRENTLY THE USER IS AT ",user.CurrentQuestionNo
+			if user.CurrentQuestionNo==14:
+				return HttpResponseRedirect("/winner")
 			question = Question.objects.get(pk = user.CurrentQuestionNo)
 			print "user last solved at ", user.LastSolvedAt
 			LastSolved = datetime.datetime.strptime(str(user.LastSolvedAt).split(".")[0], '%Y-%m-%d %H:%M:%S')
@@ -108,9 +117,9 @@ def mystery(request):
 				# return render_to_response("question.html",{"wait":waititme},context_instance = RequestContext(request))
 			# else:
 			return render_to_response("ques.html",{"q":question},context_instance = RequestContext(request))
-		except:
+		else:
 			print "HE IS A NEW USER"
-			UserDetail.objects.create(Zealid = request.user.username, CurrentQuestionNo = 1,LastSolvedAt = str(datetime.datetime.now())).save()
+			UserDetail.objects.filter(Zealid = request.user.username).update(CurrentQuestionNo = 1,LastSolvedAt = str(datetime.datetime.now()))
 			question = Question.objects.get(pk= 1)
 			return render_to_response("ques.html",{"q":question},context_instance =RequestContext(request))
 		# waitTime = datetime.now() - user.LastSolvedAt
@@ -127,8 +136,6 @@ def submit(request):
 		if answer.lower() == question.Answer.lower():
 			UserDetail.objects.filter(Zealid = request.user.username).update(CurrentQuestionNo = (user.CurrentQuestionNo)+1,LastSolvedAt = str(datetime.datetime.now()))
 			print "The answer is correct and query executed "
-			if user.CurrentQuestionNo==14:
-				return render_to_response('')
 		else:
 			print "the answer is not correct."
 	return HttpResponseRedirect("/mystery")

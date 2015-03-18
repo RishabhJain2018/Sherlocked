@@ -11,6 +11,9 @@
         border-radius:0;
         box-shadow:none;
       }
+      input.form-control{
+        margin: 0;
+      }
       label{
         font-weight:300;
       }
@@ -37,23 +40,30 @@
         margin:auto;
       }
       body{
-        background:#7F8C8D;
+        background:#fff;
       }
     </style>
+  <link rel="stylesheet" href="/static/assets/css/base.css">
   </head>
-  <body>
+  <body class="white-text" style="background-image:url('/static/assets/q6.jpg');">
+<!--   <header class="center-align">
+  <a class="waves-effect waves-light btn orange darken-3 white-text" href="/leaderboard">Leaderboard</a>
+  <a class="waves-effect waves-light btn orange darken-3 white-text" href="/description">Rules</a>
+  <a class="waves-effect waves-light btn orange darken-3 white-text" href="/mystery">Solve Mystery</a>
+  <a class="waves-effect waves-light btn orange darken-3 white-text" href="/logout">Logout</a>
+</header> -->
+
     <section class="container-fluid">
-      <div class="mainContainer">
+      <div class="mainContainer" style="opacity:0.9;">
         <h1 class="text-center">Registration Form</h1>
         <form role="form" method="post" action="" id="resiterform">
           {% csrf_token %}
           <div class="form-group">
             <label class="control-label" for="username">Username</label>
             <input id="username" name="username" type="text" placeholder="College Registration No." class="form-control input-md" required>
-            <span class="help-block">for example: 12cse020</span>
           </div>
             <div class="form-group">
-            <label class="control-label" for="firstname">First Name</label>
+            <label class="control-label" for="firstname">Name</label>
             <input id="firstname" name="firstname" type="text" placeholder="As on college ID Card" class="form-control input-md" required>
           </div>
           <div class="form-group">
@@ -61,12 +71,20 @@
             <input id="email" name="email" type="text" placeholder="email-id" class="form-control input-md" required>
           </div>
           <div class="form-group">
+            <label class="control-label" for="phno">Phone Number</label>  
+            <input id="phno" name="phno" type="text" placeholder="phno" class="form-control input-md" required>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="college">College</label>  
+            <input id="college" name="college" type="text" placeholder="College Name" class="form-control input-md" required>
+          </div>
+          <div class="form-group">
             <label class="control-label" for="password">Password</label>
-            <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required>
+            <input id="password" name="password" type="password" placeholder="Password"  class="form-control input-md" required>
           </div>
           <div class="form-group">
             <label class="control-label" for="repeatpassword">Repeat Password</label>
-            <input id="repeatpassword" name="repeatpassword" type="password" placeholder="Password Again" class="form-control input-md" required onkeyup="checkPass(); return false;">
+            <input id="repeatpassword" name="repeatpassword" type="password" placeholder="Password Again" pattern=".{6,}" class="form-control input-md" required onkeyup="checkPass(); return false;">
           </div>
           <span id="confirmMessage" class="confirmMessage"></span>
           <div class="form-group">

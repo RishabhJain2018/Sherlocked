@@ -4,19 +4,22 @@
 	<title>Sherlocked | Home</title>
 	<link rel="stylesheet" href="/static/assets/css/materialize.min.css">
 	<link rel="stylesheet" href="/static/assets/css/base.css">
+	<meta name="Track the hacker" content="Sector-62,Noida" />
 </head>
 <body class="white-text" style="background-image:url('/static/assets/q1.jpg');">
-
-
-
-
 <header class="center-align">
-
-<a class="waves-effect waves-light btn orange darken-3 white-text" href="/login">Login</a>
-<a class="waves-effect waves-light btn orange darken-3 white-text" href="/register">Register</a><br>
-
-
+	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/leaderboard">Leaderboard</a>
+	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/description">Rules</a>
+{% if user %}
+	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/mystery">Solve Mystery</a>
+	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/logout">Logout</a>
+{% else %}
+	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/login">Login</a>
+	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/register">Register</a>
+	<!-- <a class="waves-effect waves-light btn orange darken-3 white-text" href="/login">Forum</a> -->
+{% endif %}
 </header>
+
 
 <div class="valign-wrapper center-align">
 	<div class="valign">

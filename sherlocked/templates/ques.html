@@ -2,48 +2,66 @@
 <html>
 <head>
 	<title>Sherlocked | Home</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<link rel="stylesheet" href="/static/assets/css/materialize.min.css">
 	<link rel="stylesheet" href="/static/assets/css/base.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+    	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="/static/js/flipclock/flipclock.min.js"></script>
 		<link rel="stylesheet" href="/static/css/flipclock.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="/static/js/flipclock.js"></script>
     <link rel="stylesheet" href="/static/css/flipclock.css">
 </head>
 <body class="white-text" style="background-image:url('/static/assets/q6.jpg');">
+<header class="center-align">
+	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/leaderboard">Leaderboard</a>
+	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/description">Rules</a>
+	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/mystery">Solve Mystery</a>
+	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/logout">Logout</a>
+</header>
 
 <div class="container">
+<div class="row center-align">
 {% if q %}
 <div class="col s12 ques-block">
-	<span class="ques"> <quote>{{ q.Description }}</quote></span>
-<form class="form-horizontal" method="post" action="/submit">
+<h2 class="darken-3">{{ q.QuestionTitle }}</h2>
+	<span class="ques"> <quote class=flow-text>{{ q.Description }}</quote></span>
+<form method="post" action="/submit">
 		{% csrf_token %}
 		<div class="col-md-3">
 		  <input id="answer" name="answer" type="text" placeholder="Enter the answer" class="form-control input-md" required="">
 		  </div>
-		<a class="waves-effect waves-light btn black-text lighten-4  white">Got it!</a>		
+		<button class="btn waves-effect waves-light" type="submit" name="action">Got it!</button>
+		<a class="waves-effect waves-light btn white-text darken-1 blue" href="/static/hints/{{ q.Hint }}">Hint</a>				
 	</form>
 
 </div>
 {% endif %}
+</div>
 {% if wt %}
-<div style="margin: 10% 10%">		
-	<div class="clock"></div></div>
-	<h2>Wait Message: {{ waitmsg }}</h2> 
+<div class="container">
+<div class="card-panel">
+      <span class="" style="color:#333;font-size:2em;">{{ waitmsg }}</span>
+    </div>
+	<h3 class="lighten-3 blue-text center-align" style="opacity:0.9;margin:0em 1em;"></h3>	
+<div class="row center-align">		
+	<div class="col" style="height:50px;"></div>
+	<div class="col s12 flow-text">
+		
+
+	<div class="clock" >
+	</div></div>
+	</div>
+</div> 
 	<script type="text/javascript">
 	var clock = $('.clock').FlipClock({{ wt }}, {
 		countdown: true
 	});
-</script>
+    </script>
 {% endif %}
 </div>
-
-
-
 <script src="/static/assets/js/materialize.min.js"></script>
 </body>
 </html>

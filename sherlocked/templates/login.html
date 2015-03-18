@@ -44,11 +44,20 @@
       color:inherit;
     }
   </style>
+  <link rel="stylesheet" href="/static/assets/css/base.css">
 </head>
-<body>
+<body class="white-text" style="background-image:url('/static/assets/home.jpg');">
+<!-- <header class="center-align">
+  <a class="waves-effect waves-light btn orange darken-3 white-text" href="/leaderboard">Leaderboard</a>
+  <a class="waves-effect waves-light btn orange darken-3 white-text" href="/description">Rules</a>
+  <a class="waves-effect waves-light btn orange darken-3 white-text" href="/mystery">Solve Mystery</a>
+  <a class="waves-effect waves-light btn orange darken-3 white-text" href="/logout">Logout</a>
+</header> -->
+
   <section class="container-fluid">
-    <div class="loginContainer">
-      <h1 class="text-center">Login</h1>
+  <br><br>
+    <div class="loginContainer" style="opacity:0.8;">
+      <h1 class="text-center">Login</h1>  
       <form role="form" method="post" action="">
         {% csrf_token %}
         <div class="form-group">

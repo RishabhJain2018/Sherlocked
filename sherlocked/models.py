@@ -5,6 +5,8 @@ class UserDetail(models.Model):
 	Zealid = models.CharField(max_length = 70)
 	CurrentQuestionNo = models.IntegerField(default = 0)
 	LastSolvedAt = models.CharField(max_length = 10000)
+	college = models.CharField(max_length = 10000)
+	phno = models.CharField(max_length = 100)
 
 class Question(models.Model):
 	QuestionTitle = models.CharField(max_length = 1000)
@@ -13,5 +15,3 @@ class Question(models.Model):
 	Hint = models.CharField(max_length = 1000)
 	WaitTime = models.CharField(max_length = 100)
 	WaitMessage = models.CharField(max_length = 100000)
-
-
