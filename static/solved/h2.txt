@@ -1,3 +1,5 @@
+Hint:
+
     long d,r,q,bn=0,o=0;
     int bin[100],i=1,j;
     char c='';
@@ -36,4 +38,3 @@ c=r;
                System.out.print(c);
                r/=100;
    }
-

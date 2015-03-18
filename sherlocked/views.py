@@ -42,7 +42,7 @@ def signup(request):
 				UserDetail.objects.create(Zealid = username,college = college,phno = phno,LastSolvedAt = str(datetime.datetime.now())).save()
 				return HttpResponseRedirect("/login")
 			except:
-				return HttpResponse("<h2>Error: This Id already exists</h2>")
+				return render_to_response("register.html",{"error":1},context_instance = RequestContext(request))
 		else:
 			print "entered the else section"
 			return render_to_response("register.html",context_instance=RequestContext(request))
@@ -63,7 +63,7 @@ def login(request):
 				return HttpResponseRedirect("/description")
 			else:
 				# Show an error page
-				return HttpResponse("<h3>Incorrect password</h3>")
+				return render_to_response("login.html",{"error":1},context_instance = RequestContext(request))
 		return render_to_response('login.html',context_instance=RequestContext(request))
 	else:
 		return HttpResponseRedirect("/mystery")
@@ -141,10 +141,15 @@ def submit(request):
 	return HttpResponseRedirect("/mystery")
 
 def leaderboard(request):
-	users = UserDetail.objects.order_by('-CurrentQuestionNo')
-	for i in users:
-		print i.Zealid
+	users = UserDetail.objects.order_by('-CurrentQuestionNo')[:7:1]
+	# if user.count()>10:
+		# user = user[]
+	# for i in users:
+		# print i.Zealid
 	return render_to_response("leaderboard.html",{'users':users},context_instance = RequestContext(request))
 
 def winner(request):
-	return render_to_response("winner.html")
+	if user.is_authenticated():
+		return render_to_response("winner.html")
+	else:
+		return HttpResponseRedirect("/login")

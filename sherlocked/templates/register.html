@@ -52,13 +52,18 @@
   <a class="waves-effect waves-light btn orange darken-3 white-text" href="/mystery">Solve Mystery</a>
   <a class="waves-effect waves-light btn orange darken-3 white-text" href="/logout">Logout</a>
 </header> -->
-
     <section class="container-fluid">
       <div class="mainContainer" style="opacity:0.9;">
         <h1 class="text-center">Registration Form</h1>
         <form role="form" method="post" action="" id="resiterform">
           {% csrf_token %}
           <div class="form-group">
+             {% if error %}
+              <div class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong>Error!</strong> The User already exists.
+              </div>
+             {% endif %}
             <label class="control-label" for="username">Username</label>
             <input id="username" name="username" type="text" placeholder="College Registration No." class="form-control input-md" required>
           </div>
@@ -90,6 +95,7 @@
           <div class="form-group">
             <input type="submit" id="submitBtn" name="submitBtn" class="btn btn-primary" value="Register" >
           </div>
+           <p class="text-center">Already Registered. <a href="/login">Login</a> here</p>
         </form> 
       </div>
     </section>

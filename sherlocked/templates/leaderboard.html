@@ -29,7 +29,7 @@
 			<tbody>
 			{% for i in users %}
 				<tr>
-					<td></td>
+					<td>{{ forloop.counter }}</td>
 					<td>{{ i.Zealid }}</td>
 					<td>{{ i.CurrentQuestionNo }}</td>
 					<td>{{ i.college }}</td>

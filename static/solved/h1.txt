@@ -1,0 +1,10 @@
+Ds.pif		inst.exe		send.inf		shut_off.cpl	send.scr
+Encrypt.jse	regist.reg	copy.bat	gui.com		graph.msi	
+Dsc.hta		visual.vbs	link.lnk		pass.scf		wsript.wsf
+Vir.doc		jac.js		vbencry.vbe	window.ws	power.ps1
+Monad.msh	shell.inf		gman.vbs	inatall.msp	gadge.pif
+Java.jar		wind.sys	game.dll	book.bka	scam.tps
+Ransom.cryptowall	agent.lik	troj.dllb		auto.fag     sober.delf
+
+
+The type of file most widely used in hacking.

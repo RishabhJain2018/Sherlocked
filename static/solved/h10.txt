@@ -1,0 +1,4 @@
+HINT: 
+
+Link to a page with a page containing a java program containing the code to find out the source code of any Page entered.(the metadata of the page contains the location required) question3.doc
+Refer to http://en.m.wikipedia.org/wiki/Source_Code
