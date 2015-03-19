@@ -2,7 +2,7 @@
 
 int a[]=new int[l];
 int i,j,q;
-String s=”*”,st=””;
+String s="*",st="";
 int l=s.length();
 ########################
 #######################
@@ -41,8 +41,12 @@ System.out.print(st.charAt(i));
 ###################
 #########
 ##############################
-###########1
+###########
 #########################
 }
+
 Output:
 4%#5EF3Y*6(?5><5PO5I*3^&3%^5<?0IO6,*2)&66M57I38K6H055Q5JH3U*4R65&I3%Y5$54U15 
+
+Keep focus on code and not the missing code. 
+Some thing is always there to distract.  

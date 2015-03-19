@@ -1,5 +1,4 @@
-Hints:
- 
-Hint #1: Link for the pseudo code.
-Hint #2: Link http://en.m.wikipedia.org/wiki/Flame_(malware)
-Hint #3: Link http://en.m.wikipedia.org/wiki/Hash_collision
+
+Hint #1: The encrypted password is bb3ac692035df47ba3f9d7c0d96dab24 
+Hint #2: http://en.m.wikipedia.org/wiki/Flame_(malware)
+Hint #3: http://en.m.wikipedia.org/wiki/Hash_collision

@@ -102,7 +102,7 @@ def mystery(request):
 			print "HE IS A PREVIOUS USER"
 			print user.CurrentQuestionNo
 			print "CURRENTLY THE USER IS AT ",user.CurrentQuestionNo
-			if user.CurrentQuestionNo==14:
+			if user.CurrentQuestionNo==13:
 				return HttpResponseRedirect("/winner")
 			question = Question.objects.get(pk = user.CurrentQuestionNo)
 			print "user last solved at ", user.LastSolvedAt

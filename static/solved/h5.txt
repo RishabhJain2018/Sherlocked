@@ -1,4 +1,4 @@
 HINT:
 
 Refer to link http://en.wikipedia.org/wiki/Computer_port_(hardware)#Types_of_ports 
-Also known as “DiskOnKey”.
+Also known as "DiskOnKey".

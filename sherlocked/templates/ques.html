@@ -5,12 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<link rel="stylesheet" href="/static/assets/css/materialize.min.css">
 	<link rel="stylesheet" href="/static/assets/css/base.css">
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
-    	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="/static/js/flipclock/flipclock.min.js"></script>
-		<link rel="stylesheet" href="/static/css/flipclock.css">
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="/static/js/flipclock/flipclock.min.js"></script>
+	<link rel="stylesheet" href="/static/css/flipclock.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="/static/js/flipclock.js"></script>
     <link rel="stylesheet" href="/static/css/flipclock.css">
 </head>
@@ -34,7 +32,7 @@
 		  <input id="answer" name="answer" type="text" placeholder="Enter the answer" class="form-control input-md" required="">
 		  </div>
 		<button class="btn waves-effect waves-light" type="submit" name="action">Got it!</button>
-		<a class="waves-effect waves-light btn white-text darken-1 blue" href="/static/solved/{{ q.Hint }}">Clue</a>
+		<a class="waves-effect waves-light btn white-text darken-1 blue" href="/static/solved/{{ q.Hint }}" target="_blank">Clue</a>
 	</form>
 
 </div>
@@ -42,7 +40,7 @@
 </div>
 {% if wt %}
 <div class="container">
-<div class="card-panel">
+<div7 class="card-panel" style="margin:0 20%;">
       <span class="" style="color:#333;font-size:2em;">{{ waitmsg }}</span>
     </div>
 	<h3 class="lighten-3 blue-text center-align" style="opacity:0.9;margin:0em 1em;"></h3>	
@@ -51,13 +49,15 @@
 	<div class="col s12 flow-text">
 		
 
-	<div class="clock" >
+	<div class="clock" style="margin:0 25%;" >
 	</div></div>
 	</div>
 </div> 
 	<script type="text/javascript">
 	var clock = $('.clock').FlipClock({{ wt }}, {
-		countdown: true
+		countdown: true,
+		stop : function(){
+				window.location = '';}
 	});
     </script>
 {% endif %}

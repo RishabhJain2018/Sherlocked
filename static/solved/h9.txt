@@ -1,6 +1,4 @@
-HINT:
-Encryption:
-String s=”*”;
+String s="*";
 int l=s.length(),i,j,t,c=0;
 char array[]=new char[l];   
 int x[]=new x[l];
@@ -42,7 +40,8 @@ i++;
 }
 
 
-Output: Form of output
+Output: 
+
 32                        57
  32                      57
   32                    55
@@ -56,3 +55,5 @@ Output: Form of output
           55    32
            57  32
             5732
+
+Decode the output using above code. 
