@@ -26,6 +26,8 @@ urlpatterns = patterns('',
     url(r'logout', 'django.contrib.auth.views.logout',{'next_page': '/login'}),
     # url(r'/mystery/(P<qno>[\w.@+-,\' \'\';\'%{}\[\]]+)?$', 'sherlocked.views.qno', name='qno'),
     url(r'mystery', 'sherlocked.views.mystery', name='mystery'),
+    url(r'rules', 'sherlocked.views.rules', name='rules'),
+
 )
 
 # urlpatterns += patterns('',

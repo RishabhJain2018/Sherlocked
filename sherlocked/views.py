@@ -23,7 +23,7 @@ def home(request):
 	"""this view is for the home page display"""
 
 	if request.user.is_authenticated():
-		return render_to_response("index.html",{"user":request.user},context_instance=RequestContext(request))
+		return render_to_response("description.html",{"user":request.user},context_instance=RequestContext(request))
 	else:
 		return render_to_response("index.html",{"user":0},context_instance=RequestContext(request))
 
@@ -159,3 +159,6 @@ def winner(request):
 		return render_to_response("winner.html")
 	else:
 		return HttpResponseRedirect("/")
+
+def rules(request):
+	return render(request, 'rules.html')
