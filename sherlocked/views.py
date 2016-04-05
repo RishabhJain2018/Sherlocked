@@ -42,6 +42,7 @@ def signup(request):
 			college = request.POST['college']
 			phno = request.POST['phno']
 			try:
+				print "enter try"
 				user = User.objects.create_user(username=username,email=email,password=password,first_name=name,last_name='')
 				user.save()
 				UserDetail.objects.create(Zealid = username,college = college,phno = phno,LastSolvedAt = str(datetime.datetime.now())).save()
