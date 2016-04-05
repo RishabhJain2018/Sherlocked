@@ -64,12 +64,12 @@
 
 @media only screen and (max-width: 1369px) and (min-width: 1281px) {
 .login {
-  width: 250px;
+  width: 180px;
   color: white;
   background: #07303f;
   font-weight: bold;
-  font-size: 40px;
-  height: 80px;
+  font-size: 28px;
+  height: 50px;
 }
  
 .login:hover {
@@ -79,12 +79,12 @@
 }
 
 .register {
-  font-size: 40px;
-  width: 250px;
+  font-size: 28px;
+  width: 180px;
   color: white;
   background:#07303f;
   font-weight: bold;
-  height: 80px;
+  height: 50px;
 }
  
 .register:hover {
