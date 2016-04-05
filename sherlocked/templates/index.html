@@ -1,33 +1,43 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sherlocked | Home</title>
-	<link rel="stylesheet" href="/static/assets/css/materialize.min.css">
-	<link rel="stylesheet" href="/static/assets/css/base.css">
-	<meta name="Track the hacker" content="Sector-62, Noida" />
+	<title>Sherlocked'16</title>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="{% static "css/style.css"%}">
+
+<link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
+
 </head>
-<body class="white-text" style="background-image:url('/static/assets/q1.jpg');">
-<header class="center-align">
-	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/leaderboard">Leaderboard</a>
-	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/description">Description</a>
-{% if user %}
-	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/mystery">Solve Mystery</a>
-	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/logout">Logout</a>
-{% else %}
-	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/login">Login</a>
-	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/register">Register</a>
-	<!-- <a class="waves-effect waves-light btn orange darken-3 white-text" href="/login">Forum</a> -->
-{% endif %}
-</header>
-
-
-<div class="valign-wrapper center-align">
-	<div class="valign">
-		
-		
-	</div>
+<body>
+  <div class="container-fluid">
+  <div class="header">
+    <div class="row">
+    <div class="col-md-6 col-md-offset-1">
+    <p>Sherlocked'16</p>
+  </div>
+  </div>
 </div>
-
-<script src="/static/assets/js/materialize.min.js"></script>
+  <br><br><br><br><br><br>
+  <div class="row">
+	<div class="col-md-5 col-md-offset-2">
+  		<a href="/login"><button type="submit" class="login">Login</button></a>&nbsp&nbsp&nbsp&nbsp
+      <a href="/register"><button type="submit" class="register">Register</button></a>
+</div>
+</div>
+<div class="row">
+</div>
+</div>
 </body>
 </html>

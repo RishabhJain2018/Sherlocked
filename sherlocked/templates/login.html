@@ -1,110 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Get Ready to Sherlocked</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-  <style>
-    .form-control,.form-control:focus,.btn{
-      border-radius:0;
-      box-shadow:none;
-    }
-    label{
-      font-weight:300;
-    }
-    .loginContainer{
-      background-color: #fff;
-      box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.3);
-      margin:auto;
-      margin-top:4%;
-      padding:3% 20px;
-      max-width:450px;
-      width:100%;
-      border-radius:2px;
-    }
-    .loginContainer h1{
-      font-size:2em;
-      margin-top:0;
-    }
-    .btn{
-      background:#34495E;
-      border:0;
-      display:block;
-      width:100%;
-      max-width:200px;
-      margin:auto;
-    }
-    body{
-      background:#7F8C8D;
-    }
-    .forgotPassword,.forgotPassword:focus,.forgotPassword:hover{
-      font-size:.9em;
-      color:inherit;
-    }
-  </style>
-  <link rel="stylesheet" href="/static/assets/css/base.css">
-</head>
-<body class="white-text" style="background-image:url('/static/assets/home.jpg');">
-<!-- <header class="center-align">
-  <a class="waves-effect waves-light btn orange darken-3 white-text" href="/leaderboard">Leaderboard</a>
-  <a class="waves-effect waves-light btn orange darken-3 white-text" href="/description">Rules</a>
-  <a class="waves-effect waves-light btn orange darken-3 white-text" href="/mystery">Solve Mystery</a>
-  <a class="waves-effect waves-light btn orange darken-3 white-text" href="/logout">Logout</a>
-</header> -->
+{% load static %}
 
-  <section class="container-fluid">
-  <br><br>
-    <div class="loginContainer" style="opacity:0.8;">
-      <h1 class="text-center">Login</h1>  
-      <form role="form" method="post" action="">
-        {% csrf_token %}
-        <div class="form-group">
-          <label class="control-label" for="username">Username</label>
-          <input id="username" name="username" type="text" placeholder="username" class="form-control input-md" required style="margin:0;">
-        </div>
-        <div class="form-group">
-          <label class="control-label" for="password">Password</label>
-          <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" required style="margin:0;">
-        </div>
-        <div class="form-group">
-          <input type="submit" class="btn btn-primary" value="Lets Solve the Case">
-        </div>
-      </form>
-      <p class="text-center">Not a member yet. You can <a href="/register">Signup</a> here</p>
-    {% if error %}
-      <div class="alert alert-danger">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sherlocked'16</title>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+  <script src = "{% static "js/jquery-1.11.0.min.js" %}"></script>
+
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-1">
+  <div class="header">
+    <p>Sherlocked'16</p>
+    </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-offset-2" id="reg">
+      LOG IN
+    </div>
+  </div>
+  <div class="row">
+  <div class="col-md-3 col-md-offset-2">
+  <form role="form" method="post" action="">
+    {% csrf_token %}
+      <div class="form-group">
+        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>  
+      </div>
+      <div class="form-group">      
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+      </div>
+      <button type="submit" class="button">Log me in!!</button>
+  </form>
+  <a href="/register" id="log">Not Registered Yet? You can Register here.</a>
+  {% if error %}
+  <div class="alert alert-danger">
     <a href="#" class="close" data-dismiss="alert">&times;</a>
     <strong>Error!</strong> Wrong Username and Password Combination.
 </div>
     {% endif %}
-    </div>        
-  </section>
-  <div class="modal fade" id="forgotPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-          <form action="" onsubmit="return false;">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" name="email" id="email" placeholder="Email Id" required>
-            </div>
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary" value="Retrive password">
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    </div>  
   </div>
+</div>
+</div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script>
-  // $(document).on('click','.forgotPassword',function(){
-  //   $('#forgotPasswordModal').modal('show');
-  // });
-</script>
 </html>

@@ -19,17 +19,22 @@ from datetime import datetime,timedelta
 import random,string,ast
 import datetime
 def home(request):
+
 	"""this view is for the home page display"""
-	# if request.user.is_authenticated():
-		# return render_to_response("index.html",{"user":request.user},context_instance=RequestContext(request))
-	# else:
-	return render_to_response("winner.html",{"user":0},context_instance=RequestContext(request))
+
+	if request.user.is_authenticated():
+		return render_to_response("index.html",{"user":request.user},context_instance=RequestContext(request))
+	else:
+		return render_to_response("index.html",{"user":0},context_instance=RequestContext(request))
+
 
 def signup(request):
+
 	"""signup for the user """
+
 	if not request.user.is_active:
 		if request.POST:
-			print "entered the if sectison"
+			print "entered the if section"
 			username = request.POST['username']
 			email = request.POST['email']
 			password = request.POST['password']
@@ -92,7 +97,7 @@ def description(request):
 	if request.user.is_authenticated():
 		return render_to_response("description.html")
 	else:
-		return HttpResponseRedirect("/login")
+		return HttpResponseRedirect("/")
 
 def mystery(request):
 	if request.user.is_authenticated():
@@ -102,7 +107,7 @@ def mystery(request):
 			print "HE IS A PREVIOUS USER"
 			print user.CurrentQuestionNo
 			print "CURRENTLY THE USER IS AT ",user.CurrentQuestionNo
-			if user.CurrentQuestionNo==13:
+			if user.CurrentQuestionNo==17:
 				return HttpResponseRedirect("/winner")
 			question = Question.objects.get(pk = user.CurrentQuestionNo)
 			print "user last solved at ", user.LastSolvedAt
@@ -110,22 +115,23 @@ def mystery(request):
 			wait = (datetime.datetime.now()-LastSolved).total_seconds() < float(question.WaitTime)*60*60 
 			if wait:
 				wt = abs((datetime.datetime.now()-LastSolved).total_seconds() - float(question.WaitTime)*60*60)
-				print "THE WAIT TIME FOR USER IS ",wt 
-				return render_to_response("ques.html",{'wt':int(wt),'waitmsg':question.WaitMessage},context_instance = RequestContext(request))
+				print "THE WAIT TIME FOR USER IS ", wt 
+				return render_to_response("question.html",{'wt':int(wt),'waitmsg':question.WaitMessage},context_instance = RequestContext(request))
 			# waitTime = int((datetime.datetime.now() - user.LastSolvedAt[:-6]).total_seconds())
 			# if waitime>=question.:
 				# return render_to_response("question.html",{"wait":waititme},context_instance = RequestContext(request))
 			# else:
-			return render_to_response("ques.html",{"q":question},context_instance = RequestContext(request))
+			return render_to_response("question.html",{"q": question },context_instance = RequestContext(request))
 		else:
 			print "HE IS A NEW USER"
 			UserDetail.objects.filter(Zealid = request.user.username).update(CurrentQuestionNo = 1,LastSolvedAt = str(datetime.datetime.now()))
 			question = Question.objects.get(pk= 1)
-			return render_to_response("ques.html",{"q":question},context_instance =RequestContext(request))
+			return render_to_response("question.html",{"q": question},context_instance =RequestContext(request))
 		# waitTime = datetime.now() - user.LastSolvedAt
-		return render_to_response('ques.html')
+		return render_to_response('question.html')
 	else:
-		return HttpResponseRedirect('/login')
+		return HttpResponseRedirect('/')
+
 
 def submit(request):
 	if request.POST:
@@ -152,4 +158,4 @@ def winner(request):
 	if user.is_authenticated():
 		return render_to_response("winner.html")
 	else:
-		return HttpResponseRedirect("/login")
+		return HttpResponseRedirect("/")

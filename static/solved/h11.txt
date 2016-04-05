@@ -1,4 +1,0 @@
-
-Hint #1: The encrypted password is bb3ac692035df47ba3f9d7c0d96dab24 
-Hint #2: http://en.m.wikipedia.org/wiki/Flame_(malware)
-Hint #3: http://en.m.wikipedia.org/wiki/Hash_collision

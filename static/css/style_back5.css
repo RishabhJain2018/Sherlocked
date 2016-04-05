@@ -1,0 +1,51 @@
+@media only screen and (max-width: 600px) {
+body {
+    background-color: #222;
+    background: url(../images/9.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+}
+@media only screen and (min-width: 1441px) {
+	body {
+    background-color: #222;
+    background: url(../images/9.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+}
+@media only screen and (max-width: 1440px) and (min-width: 1281px) {
+body {
+    background-color: #222;
+    background: url(../images/9.jpg) no-repeat center center fixed; 
+  -webkit-background-size: 1440px 900px;
+  -moz-background-size: 1440px 900px;
+  -o-background-size: 1440px 900px;
+  background-size: 1440px 900px;
+}
+}
+
+@media only screen and (max-width: 1280px) and (min-width: 601px) {
+body {
+    background-color: #222;
+    background: url(../images/9.jpg) no-repeat center center fixed; 
+  -webkit-background-size: 1280px 800px;
+  -moz-background-size: 1280px 800px;
+  -o-background-size: 1280px 800px;
+  background-size: 1280px 800px;
+}
+}
+@media only screen and (max-width: 1369px) and (min-width: 1281px) {
+body {
+    background-color: #222;
+    background: url(../images/9.jpg) no-repeat center center fixed; 
+  -webkit-background-size: 1366px 768px;
+  -moz-background-size: 1366px 768px;
+  -o-background-size: 1366px 768px;
+  background-size: 1366px 768px;
+}
+}

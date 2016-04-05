@@ -1,29 +1,108 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title>Sherlocked | Home</title>
-	<link rel="stylesheet" href="/static/assets/css/materialize.min.css">
-	<link rel="stylesheet" href="/static/assets/css/base.css">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sherlocked | Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/style_back2.css"%}">
+
+    
+    <link href="{% static "css/bootstrap.min.css"%}" rel="stylesheet">
+
+    
+    <link href="{% static "css/sb-admin.css"%}" rel="stylesheet">
+
+    
+    <link href="{% static "font-awesome/css/font-awesome.min.css"%}" rel="stylesheet" type="text/css">
+
+    
+    
+    
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
 </head>
-<body class="white-text" style="background-image:url('/static/assets/q3.jpg');background-attachment:fixed;background-repeat:no-repeat; background-size:contain;">
-<header class="center-align">
-	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/leaderboard">Leaderboard</a>
-	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/description">Rules</a>
-	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/mystery">Solve Mystery</a>
-	<a class="waves-effect waves-light btn orange darken-3 white-text" href="/logout">Logout</a>
-</header>
 
-<div class="">
+<body>
 
-<div class="col s12 ques-block">
-	<span class="flow-text" id="leader" style="font-weight:400; font-size:20px!important;line-height:1.653em;">
-	<p>The funds for the annual techfest of JSSATE, Noida, ZEALICON was stolen from the account set for the funding of the same, leaving the organizers in a state of shock. The account was setup basically to store the funds for organizing the events.</p>
-<p>A team was set up under the guidance of Detective Aman Agarwal of the cyber cell of the Police department so as to investigate the matter and bring the criminal to justice.</p><p>
-The team went to the regional office of the bank so as to check if the bank’s network has any malware installed in it. After an extensive search the team came across a few sophisticated programs of which one was a Trojan. After studying the source code it was discovered that it was written by a notorious Indian hacker whose name was not known till date. The team found out the IP address of the system from where the malware was updated. After searching they found out the place from where the malware had been uploaded.</p><p>
- The team found a suspicious drive connected to the computer from where the malware was copied. On Diagnosis of the Pd, the Pd was found to have contained a Trojan which got installed automatically in the system when the Pd is plugged in it. The Trojan was programmed to get installed on any website’s server when visited from any computer connected to the college server. While checking the camera footage a man of unknown identity was seen inserting Pd in the system. The identity was later confirmed. The team asked for the seller's details from the manufacturing company. On enquiring about the Pd from retail website it was found to have been purchased by some person who claimed to have lost the pd recently. The man who was captured on the camera was tracked down and questioned to which he revealed that he did so under the influence of money. He also told the Police that the name of the person is Rajesh and described to the sketch artist the face of the man.</p><p>
-The malware revealed that it was sending all the information to an IP. The IP was tracked to a local establishment. On being asked the owner revealed that he knows nothing about the robbery. On searching the café a device was discovered plugged in a system which created a hotspot. The hotspot was secured and incidentally was being accessed at the current moment. The Police started a manhunt for the person in the nearby areas. The Police Caught the person and from the person’s laptop they found out the evidence linking him to the crime and hence leading him to his apprehension.</p> 
-</div>
-</div>
-<script src="/static/assets/js/materialize.min.js"></script>
+    <div id="wrapper">
+
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Sherlocked</a>
+            </div>
+
+            
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href="/mystery"><i class="fa fa-fw fa-th-list"></i> Solve Mystery </a>
+                    </li>
+                    <li>
+                        <a href="/leaderboard"><i class="fa fa-fw fa-bar-chart-o"></i> Leaderboard </a>
+                    </li>
+                    <!-- <li>
+                        <a href=""><i class="fa fa-fw fa-edit"></i> Description </a>
+                    </li> -->
+                    <li>
+                        <a href="/description"><i class="fa fa-fw fa-list"></i> Description </a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-facebook"></i> Forum </a>
+                    </li>
+                    <li>
+                        <a href="/logout"><i class="fa fa-sign-out"></i> Logout</a>
+                    </li>
+        </nav>
+<br><br>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1">
+                    <div class="heading">
+                        <p>About </p>
+                    </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                <div class="col-md-4 col-md-offset-1">
+                <div class="content">
+                    <p>
+                        'Sherlocked'  is fervent journey of relating the clues and solving a mystery. You are supposed to technically anaylse the case as a detective to reach to its crux. An abandoned backpack is discovered at Jojoba Park, while the man advancing to possess it vanishes into thin air without even picking it up as the police patrolling penetrates in. This develops into an series of events that lead to the criminal. 'Sherlocked' Exilerating event that keeps you on the edge of your seats the whole time. So, hop into the ride of 'Sherlocked' and to find what lies forth and track the crime that was once concealed !
+
+                    </p>
+                </div>
+                </div>
+                </div>
+            </div>
+            
+
+
+    </div>
+    
+
+    
+    <script src="{% static "js/jquery.js"%}"></script>
+
+    
+    <script src="{% static "js/bootstrap.min.js"%}"></script>
+
 </body>
+
 </html>
